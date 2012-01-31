@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/demopom/!svn/ver/3/src/com/hurlant/crypto/cert
+END
+MozillaRootCertificates.as
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/demopom/!svn/ver/3/src/com/hurlant/crypto/cert/MozillaRootCertificates.as
+END
+X509CertificateCollection.as
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/demopom/!svn/ver/3/src/com/hurlant/crypto/cert/X509CertificateCollection.as
+END
+X509Certificate.as
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/demopom/!svn/ver/3/src/com/hurlant/crypto/cert/X509Certificate.as
+END

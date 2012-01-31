@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+				layout="absolute" 
+				verticalScrollPolicy="off" addedToStage="init()"  horizontalScrollPolicy="off"   width="1000" height="600" frameRate="30" >
+	
+	
+	<mx:Script source="demo.as" />
+	
+	<mx:VBox>
+		<mx:TextArea id="textArea" width="300" height="300"/>
+		<mx:Button label="Connect" click="onConnectClick()"/>
+		<mx:Button label="Send" click="onSendClick()"/>
+		<mx:Button label="Disconnect" click="onDisconnectClick()"/>
+	</mx:VBox>
+
+
+</mx:Application>

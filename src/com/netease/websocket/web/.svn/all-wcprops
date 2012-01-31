@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/demopom/!svn/ver/5/src/com/netease/websocket/web
+END
+IWebSocketLogger.as
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/demopom/!svn/ver/5/src/com/netease/websocket/web/IWebSocketLogger.as
+END
+WebsocketTransport.as
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/demopom/!svn/ver/7/src/com/netease/websocket/web/WebsocketTransport.as
+END
+WebSocket.as
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/demopom/!svn/ver/7/src/com/netease/websocket/web/WebSocket.as
+END
+WebSocketEvent.as
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/demopom/!svn/ver/5/src/com/netease/websocket/web/WebSocketEvent.as
+END
+WebSocketMainInsecure.as
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/demopom/!svn/ver/5/src/com/netease/websocket/web/WebSocketMainInsecure.as
+END
+WebSocketMain.as
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/demopom/!svn/ver/5/src/com/netease/websocket/web/WebSocketMain.as
+END

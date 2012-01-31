@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/demopom/!svn/ver/3/src/com/hurlant/util/der
+END
+IAsn1Type.as
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/demopom/!svn/ver/3/src/com/hurlant/util/der/IAsn1Type.as
+END
+Integer.as
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/demopom/!svn/ver/3/src/com/hurlant/util/der/Integer.as
+END
+PEM.as
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/demopom/!svn/ver/3/src/com/hurlant/util/der/PEM.as
+END
+Type.as
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/demopom/!svn/ver/3/src/com/hurlant/util/der/Type.as
+END
+PrintableString.as
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/demopom/!svn/ver/3/src/com/hurlant/util/der/PrintableString.as
+END
+Sequence.as
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/demopom/!svn/ver/3/src/com/hurlant/util/der/Sequence.as
+END
+ObjectIdentifier.as
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/demopom/!svn/ver/3/src/com/hurlant/util/der/ObjectIdentifier.as
+END
+ByteString.as
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/demopom/!svn/ver/3/src/com/hurlant/util/der/ByteString.as
+END
+DER.as
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/demopom/!svn/ver/3/src/com/hurlant/util/der/DER.as
+END
+UTCTime.as
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/demopom/!svn/ver/3/src/com/hurlant/util/der/UTCTime.as
+END
+OID.as
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/demopom/!svn/ver/3/src/com/hurlant/util/der/OID.as
+END
+Set.as
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/demopom/!svn/ver/3/src/com/hurlant/util/der/Set.as
+END
