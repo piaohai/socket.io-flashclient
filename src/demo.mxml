@@ -2,8 +2,7 @@
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
 				layout="absolute" 
 				verticalScrollPolicy="off" addedToStage="init()"  horizontalScrollPolicy="off"   width="1000" height="600" frameRate="30" >
-	
-	
+
 	<mx:Script source="demo.as" />
 	
 	<mx:VBox>

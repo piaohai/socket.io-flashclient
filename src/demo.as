@@ -1,48 +1,38 @@
 import com.adobe.serialization.json.JSON;
 import com.netease.websocket.ISocketIOTransport;
 import com.netease.websocket.ISocketIOTransportFactory;
+import com.netease.websocket.MessageEvent;
 import com.netease.websocket.SocketIOErrorEvent;
 import com.netease.websocket.SocketIOEvent;
 import com.netease.websocket.SocketIOTransportFactory;
+import com.netease.websocket.SocketService;
 import com.netease.websocket.polling.XhrPollingTransport;
+import com.netease.websocket.web.WebSocketEvent;
 import com.netease.websocket.web.WebsocketTransport;
 
+import flash.events.Event;
 import flash.system.Security;
 
+import mx.core.Application;
 
+private var socket:SocketService;
 
-private var _socketIOTransportFactory:ISocketIOTransportFactory = new SocketIOTransportFactory();
-private var _ioSocket:ISocketIOTransport;
 
 private function init():void {
 	Security.allowDomain("*");
+	Application.application.stage.addEventListener(SocketService.ONMESSAGE,onMessage);
 }
+
 
 private function onConnectClick():void
 {
-	_ioSocket = _socketIOTransportFactory.createSocketIOTransport(XhrPollingTransport.TRANSPORT_TYPE, "localhost:8081/socket.io/1");
-	_ioSocket.addEventListener(SocketIOEvent.CONNECT, onSocketConnected);
-	_ioSocket.addEventListener(SocketIOEvent.DISCONNECT, onSocketDisconnected);
-	_ioSocket.addEventListener(SocketIOEvent.MESSAGE, onSocketMessage);
-	_ioSocket.addEventListener(SocketIOErrorEvent.CONNECTION_FAULT, onSocketConnectionFault);
-	_ioSocket.addEventListener(SocketIOErrorEvent.SECURITY_FAULT, onSocketSecurityFault);
-	_ioSocket.connect();
+	socket = new SocketService();
+	socket.connect();
 }
-private function onSocketConnectionFault(event:SocketIOErrorEvent):void
-{
-	logMessage(event.type + ":" + event.text);
-}
-private function onSocketSecurityFault(event:SocketIOErrorEvent):void
-{
-	logMessage(event.type + ":" + event.text);
-}
-private function onDisconnectClick():void
-{
-	_ioSocket.disconnect();
-}
-private function onSocketMessage(event:SocketIOEvent):void
-{
-	if (event.message is String)
+
+
+private function onMessage(event:MessageEvent):void{
+ 	if (event.message is String)
 	{
 		logMessage(String(event.message));
 	}
@@ -50,22 +40,18 @@ private function onSocketMessage(event:SocketIOEvent):void
 	{
 		logMessage(JSON.encode(event.message));
 	}
+	
+}
+	
+
+private function onDisconnectClick():void
+{
+	socket.disconnect();
 }
 
 private function onSendClick():void
 {
-	_ioSocket.send({name: "hi", args:[{name:"yph",myx:"fsfsd"}]});
-}
-
-
-private function onSocketConnected(event:SocketIOEvent):void
-{
-	logMessage("Connected" + event.target);
-}
-
-private function onSocketDisconnected(event:SocketIOEvent):void
-{
-	logMessage("Disconnected" + event.target);
+	socket.send({name: "hi", args:[{name:"yph",myx:"fsfsd"}]});
 }
 
 private function logMessage(message:String):void
