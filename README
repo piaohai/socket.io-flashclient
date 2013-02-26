@@ -1,9 +1,7 @@
- flash web socket client for socket.io 
+ flash web socket client for pomelo 
 
 thanks to other developer such as socket.io ,websocket falsh etc.
-
-
-
+ 
 for the purpose of my json socket io server
 
 free use 
@@ -17,9 +15,6 @@ node server.js
 
 
 run in flashbuilder or bin-debug/demo.swf
-
-
-
 
 
 

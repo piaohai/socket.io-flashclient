@@ -6,11 +6,21 @@
 	<mx:Script source="demo.as" />
 	
 	<mx:VBox>
-		<mx:TextArea id="textArea" width="300" height="300"/>
-		<mx:Button label="Connect" click="onConnectClick()"/>
-		<mx:Button label="Send" click="onSendClick()"/>
-		<mx:Button label="Disconnect" click="onDisconnectClick()"/>
-	</mx:VBox>
-
+		<mx:TextArea id="msgArea" width="1001" height="463"/>
+ 	</mx:VBox>
+	<mx:Label x="10" y="532"  text="name:" />
+	<mx:TextArea id="debugArea" x="690" y="470"  width="300" height="120"/>
+	<mx:Button x="204" y="530" label="join" id='join'  click="OnLogin()"/>
+	<mx:Button x="582" y="568" label="send" id="send" click="onSend()"   />
+	<mx:Label x="10" y="502"    text="channel:" />
+ 	<mx:TextInput x="61" y="530" width="135" id='userName' text="lily"/>
+	<mx:TextInput id="msg" x="307" y="530" width="256" height="60" text=""/>
+	<mx:ComboBox x="307" y="499"  width="256" id='users' height="22">
+		<mx:ArrayCollection id="userList"> 
+			<mx:Object label="ALL"  data="*"/> 
+		</mx:ArrayCollection> 
+	</mx:ComboBox>
+ 	<mx:TextInput x="61" y="500" text="pomelo" id='channel'   width="135" />
+ 
 
 </mx:Application>

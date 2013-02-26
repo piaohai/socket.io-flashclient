@@ -2,6 +2,8 @@ package com.netease.websocket
 {
 	
 	import com.adobe.serialization.json.JSON;
+	import com.adobe.serialization.json.JSONDecoder;
+	import com.netease.protocol.json.Protocol;
 	import com.netease.websocket.ISocketIOTransport;
 	import com.netease.websocket.ISocketIOTransportFactory;
 	import com.netease.websocket.SocketIOErrorEvent;
@@ -26,11 +28,13 @@ package com.netease.websocket
 		
 		private var _socketIOTransportFactory:ISocketIOTransportFactory = new SocketIOTransportFactory();
 		private var _ioSocket:ISocketIOTransport;
-
-		public static const ONMESSAGE:String = "onmessage";
+  		
 		
-  		public function connect():void {
-			_ioSocket = _socketIOTransportFactory.createSocketIOTransport(WebsocketTransport.TRANSPORT_TYPE, "localhost:8081/socket.io/1");
+		public static var protocol:Protocol = new Protocol();
+		
+  		public function connect(url:String,port:uint):void {
+			//"114.113.202.141:3088/
+			_ioSocket = _socketIOTransportFactory.createSocketIOTransport(WebsocketTransport.TRANSPORT_TYPE, url + ":"+port+"/socket.io/1");
 			_ioSocket.addEventListener(SocketIOEvent.CONNECT, onSocketConnected);
 			_ioSocket.addEventListener(SocketIOEvent.DISCONNECT, onSocketDisconnected);
 			_ioSocket.addEventListener(SocketIOEvent.MESSAGE, onSocketMessage);
@@ -41,43 +45,69 @@ package com.netease.websocket
 		
 		private function onSocketConnected(event:SocketIOEvent):void
 		{
-			onReceiveMessage("Connected" + event.target);
+ 			dispatchEvent(new MessageEvent(WebSocketEvent.OPEN,event));	
 		}
-		
 		
 		private function onSocketMessage(event:SocketIOEvent):void
 		{
-			
 			onReceiveMessage(JSON.encode(event.message));
 		}
 
 		private function onReceiveMessage(message:String):void
 		{
-			var event:MessageEvent = new MessageEvent(ONMESSAGE,message);
-			Application.application.stage.dispatchEvent(event);
+ 			var event:MessageEvent = null;
+			if (message is String) {
+				var msg:String = message;
+				if (msg.indexOf(':::')==2) {
+				   msg = message.substring(6,message.length-2)
+				   var smsg = msg.replace(new RegExp("\\\\", "g"), "");
+ 				   var data:Object = JSON.decode(smsg);
+				   event = new MessageEvent(WebSocketEvent.ONMESSAGE,data);
+				   dispatchEvent(event);	
+ 				} 
+			} else {
+				event = new MessageEvent(WebSocketEvent.ONMESSAGE,message);
+				dispatchEvent(event);
+ 			}
  		}
+ 
 	
 		private function onSocketConnectionFault(event:SocketIOErrorEvent):void
 		{
-			onReceiveMessage(event.type + ":" + event.text);
+ 			dispatchEvent(new MessageEvent(WebSocketEvent.ERROR,event));	
 		}
+		
 		private function onSocketSecurityFault(event:SocketIOErrorEvent):void
 		{
-			onReceiveMessage(event.type + ":" + event.text);
+			dispatchEvent(new MessageEvent(WebSocketEvent.ERROR,event));	
 		}
 		
 		private function onSocketDisconnected(event:SocketIOEvent):void
 		{
-			onReceiveMessage("Disconnected" + event.target);
+			dispatchEvent(new MessageEvent(WebSocketEvent.ERROR,event));	
 		}
 		
 		public function send(data:Object):void{
-			_ioSocket.send(data);
+			var msg =  {name: "message", args:[data]};
+			_ioSocket.send(msg);
 		}
+ 
 		
 		public function disconnect():void{
 			_ioSocket.disconnect();
 		}
-		 
+		
+		public function sendMessage(requestId:int, route:String, message:Object):void {
+			var outputMessage:String;
+			
+			try {
+				outputMessage = Protocol.encode(requestId, route, message);
+			} catch(e:Error) {
+				trace("Error using Protocol.encode:", e);
+			}
+			send(outputMessage);
+		}
+		
+ 		 
 	}
 }

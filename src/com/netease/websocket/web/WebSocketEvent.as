@@ -12,6 +12,9 @@ public class WebSocketEvent extends Event {
   public static const CLOSE:String = "close";
   public static const MESSAGE:String = "message";
   public static const ERROR:String = "error";
+  
+  public static const ONMESSAGE:String = "onmessage";
+
 
   public var message:String;
   

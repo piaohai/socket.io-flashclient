@@ -113,7 +113,6 @@ package com.netease.websocket.web
 		
 		private function onWebSocketOpen(event:WebSocketEvent):void
 		{
- 			trace('connected ================send heartbeat=====================');
 			send(('2:::'));
 		}
 
